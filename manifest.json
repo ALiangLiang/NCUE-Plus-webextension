@@ -13,14 +13,10 @@
 		"all_frames": true,
 		"js": [  "start.js" ],
 		"matches": [ 
-			"*://webap.ncue.edu.tw/*/", 
-			"*://webap.ncue.edu.tw/*/*.aspx",  
-			"*://webap.ncue.edu.tw/other/ob/OB010.aspx*",
-			"*://webap.ncue.edu.tw/information/News/left_news.*",
-			"*://webap0.ncue.edu.tw/*/", 
-			"*://webap0.ncue.edu.tw/*/*.aspx",  
-			"*://webap0.ncue.edu.tw/other/ob/OB010.aspx*",
-			"*://webap0.ncue.edu.tw/information/News/left_news.*"
+			"*://*.ncue.edu.tw/*/", 
+			"*://*.ncue.edu.tw/*/*.aspx",  
+			"*://*.ncue.edu.tw/other/ob/OB010.aspx*",
+			"*://*.ncue.edu.tw/information/News/left_news.*"
 		],
 		"run_at": "document_start"
 	}, {
@@ -30,7 +26,7 @@
 	}, {
 		"all_frames": true,
 		"js": [ "supporter.js" ],
-		"matches": [ "*://webap.ncue.edu.tw/*", "*://webap0.ncue.edu.tw/*" ],
+		"matches": [ "*://*.ncue.edu.tw/*" ],
 		"run_at": "document_start"
 	}, {
 		"all_frames": true,

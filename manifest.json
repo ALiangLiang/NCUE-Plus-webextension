@@ -11,7 +11,7 @@
 		]
 	}, {
 		"all_frames": true,
-		"js": [  "alertCancel.js" ],
+		"js": [  "start.js" ],
 		"matches": [ 
 			"*://webap.ncue.edu.tw/*/", 
 			"*://webap.ncue.edu.tw/*/*.aspx",  
@@ -25,7 +25,7 @@
 		"run_at": "document_start"
 	}, {
 		"all_frames": true,
-		"js": [ "alertReplace.js" ],
+		"js": [ "subAfter.js" ],
 		"matches": [ "*://*.ncue.edu.tw/information/News/left_news.*" ]
 	}, {
 		"all_frames": true,

@@ -1,3 +1,28 @@
+/*var content = function b () {
+	(function() {
+		var a = [];		
+		function getMenuId(id){
+			return id.getAttribute("tabitemid");
+		}
+		for(var i = 0; i < 5; i++) {
+			a[i] = document.getElementById("ctl00_ContentPlaceHolder2_panTab" + i);
+			if(getMenuId(a[i]) != null) {
+				document.getElementById(getMenuId(a[i])).setAttribute("onclick",  'document.getElementById("ctl00_ContentPlaceHolder2_panTab" + ' + i + ').style.display = "block";');
+			}
+		}
+	})();
+};
+var script = document.createElement("script");
+script.type = "text/javascript";
+script.textContent = content;
+document.documentElement.appendChild(script);
+
+var content2 = 'b();'
+var script = document.createElement("script");
+script.type = "text/javascript";
+script.textContent = content2;
+document.documentElement.appendChild(script);*/
+
 var content = function SetActive(menuid, activeIndex) {
 
 	var hiddenObj = document.all['tab_Hidden_' + menuid];

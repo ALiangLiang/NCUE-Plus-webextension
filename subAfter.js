@@ -14,7 +14,7 @@ chrome.extension.sendRequest({"art":tar.slice(0, tar.length - 2)},function(){ co
 var node = document.createElement("button");
 node.id = "btn-announce";
 node.textContent = "閱讀公告";
-document.querySelector("body").insertBefore(node,document.body.childNodes[0]);
+document.querySelector("body").insertBefore(node,document.querySelector("table"));
 
 document.getElementById("btn-announce").onclick = function() {
 	chrome.extension.sendRequest({"click":true});

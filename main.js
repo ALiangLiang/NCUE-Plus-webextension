@@ -1,7 +1,7 @@
 var IEFreeForNCUE = {
 	art: ['<div id="myModal"class="modal fade"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"style="background-color:rgb(53, 126, 189);color:white"><h4 class="modal-title">','</h4></div><div class="modal-body"><p>','</p></div><div class="modal-footer"><button type="button"class="btn btn-default"data-dismiss="modal">懶得讀</button><button id="btn-read"type="button"class="btn btn-primary">已讀</button></div></div></div></div>'],
 	Alert: null,
-	name: "IE™ Free for NCUE",
+	name: "NCUE新教務系統 Supporter (非官方)",
 	website: "http://crux.coder.tw/ALiangLiang/",
 	entensionURL: "https://chrome.google.com/webstore/detail/ie-free-for-ncue/agbcepaalgmkkbfognoaonhippllckkc",
 	content: function() {return '您正在使用由阿良良提供的「<a href="' + this.entensionURL + '">' + this.name + '</a>」擴充功能\n歡迎至網站參觀或向同學朋友推薦:'},

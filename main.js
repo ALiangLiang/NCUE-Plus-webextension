@@ -8,9 +8,10 @@ var IEFreeForNCUE = {
 	
 	initialize: function() {
 		document.getElementById("txtUSERID").removeAttribute("disabled");
+		document.getElementById("txtUSERID").placeholder = "學號";
 		document.getElementById("txtPWD").removeAttribute("disabled");
 		document.getElementById("btnLOGIN").removeAttribute("disabled");
-		document.getElementById("txtCode").value = this.getCookie("CheckCode");
+		document.getElementById("txtCode").placeholder = "升級中...";
 		this.lib();
 		this.addContent();
 		/*
@@ -67,8 +68,10 @@ main.initialize();
 
 chrome.extension.onRequest.addListener(function(message,sender,sendResponse) {
 	if(message.art2) {
-		var ct = message.art2.split("：");
-		main.Alert = main.art[0].concat(ct[0].slice(1,ct[0].length).replace(/^\\n/,""),main.art[1],ct[1].replace(/^\\n\\n|/,"").replace(/\\n\\n/g,"<br /><br />").replace(/\\n/g,""),main.art[2]);
+		var ct = message.art2.split("：", 1);
+		var content = message.art2;
+    console.log(ct);
+		main.Alert = main.art[0].concat(ct[0].slice(1,ct[0].length).replace(/^\\n/,""),main.art[1],content.replace(/^\\n\\n|/,"").replace(/\\n\\n/g,"<br /><br />").replace(/\\n/g,""),main.art[2]);
 		$("#form1").prepend(main.Alert);
 		document.getElementById("btn-read").onclick = function() {
 			localStorage.announcement = main.Alert;

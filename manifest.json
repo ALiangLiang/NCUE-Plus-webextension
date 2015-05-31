@@ -25,7 +25,7 @@
 		"matches": [ "*://*.ncue.edu.tw/information/News/left_news.*" ]
 	}, {
 		"all_frames": true,
-		"js": [ "supporter.js" ],
+		"js": [ "supporter.js", "jquery/jquery-1.11.2.min.js"  ],
 		"matches": [ "*://*.ncue.edu.tw/*" ],
 		"run_at": "document_start"
 	}, {
@@ -36,11 +36,11 @@
 	}, {
 		"all_frames": true,
 		"js": [ "supporter_after_tree.js" ],
-		"matches": [ "*://*.ncue.edu.tw/ST/SYS/Frame_Menu.aspx" ],
+		"matches": [ "*://*.ncue.edu.tw/ST/SYS/Frame_Menu.aspx", "*://*.ncue.edu.tw/WP/SYS/Frame_Menu.aspx" ],
 		"run_at": "document_end"
 	} ],
 	"content_security_policy": "script-src 'self' https://www.google.com https://checkout.google.com; object-src 'self'",
-	"description": "破解限用IE瀏覽器，自動填入驗證碼",
+	"description": "破解限用IE瀏覽器",
 	"icons": {
 		"128": "icon/icon128.png",
 		"16": "icon/icon16.png",
@@ -50,7 +50,7 @@
 	"manifest_version": 2,
 	"name": "NCUE新教務系統 Supporter",
 	"update_url": "https://clients2.google.com/service/update2/crx",
-	"version": "1.3.0",
+	"version": "1.3.1",
 	"permissions": [
 		"tabs", "http://*/*"
 	]

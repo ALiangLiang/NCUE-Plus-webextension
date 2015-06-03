@@ -1,57 +1,61 @@
 {
-	"background": {
-		"scripts": [  "background.js" ]
-	},
-	"content_scripts": [ {
-		"css": [  "Bootstrap/css/bootstrap.min.css" ],
-		"js": [  "jquery/jquery-2.1.0.min.js", "Bootstrap/js/bootstrap.min.js",  "main.js" ],
-		"matches": [ 
-			"*://*.ncue.edu.tw/*/", 
-			"*://*.ncue.edu.tw/*/*.aspx"
-		]
-	}, {
-		"all_frames": true,
-		"js": [  "start.js" ],
-		"matches": [ 
-			"*://*.ncue.edu.tw/*/", 
-			"*://*.ncue.edu.tw/*/*.aspx",  
-			"*://*.ncue.edu.tw/other/ob/OB010.aspx*",
-			"*://*.ncue.edu.tw/information/News/left_news.*"
-		],
-		"run_at": "document_start"
-	}, {
-		"all_frames": true,
-		"js": [ "subAfter.js" ],
-		"matches": [ "*://*.ncue.edu.tw/information/News/left_news.*" ]
-	}, {
-		"all_frames": true,
-		"js": [ "supporter.js", "jquery/jquery-1.11.2.min.js"  ],
-		"matches": [ "*://*.ncue.edu.tw/*" ],
-		"run_at": "document_start"
-	}, {
-		"all_frames": true,
-		"js": [ "supporter_after.js" ],
-		"matches": [ "*://*.ncue.edu.tw/STU/C/SC020.aspx?*" ],
-		"run_at": "document_end"
-	}, {
-		"all_frames": true,
-		"js": [ "supporter_after_tree.js" ],
-		"matches": [ "*://*.ncue.edu.tw/ST/SYS/Frame_Menu.aspx", "*://*.ncue.edu.tw/WP/SYS/Frame_Menu.aspx" ],
-		"run_at": "document_end"
-	} ],
-	"content_security_policy": "script-src 'self' https://www.google.com https://checkout.google.com; object-src 'self'",
-	"description": "破解限用IE瀏覽器",
-	"icons": {
-		"128": "icon/icon128.png",
-		"16": "icon/icon16.png",
-		"48": "icon/icon48.png"
-	},
-	"key": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAhR4d9haTjBnxMYAuqSS4U7J/3JtanFb6Tft3mFf3UT409v2nwuIOMjuMLY6GGNjKMYEBHiXcAmzQ5ubzk4lmwJhDXzkNfSMz6myhPHv66UF2C4/TMBeAcpB+4DH/vN6gE2JcqfR4v/d0VJRm1Ze9w7MB4LYmpB4PvKxU8InorTyyOpGD7rMjpSsMANIuGNJDQlBs37n5aatMUkXnBekGOOMUaSPHIKFkzv0HDQh5yhGCjOAPOvk9W67NQJQnvbozTGXkH0HLffkp4SuX1afXanhRCalyZnp7viocBpt/KHksHuQ89L4yoHIrOR3SzXDhgqrinHV9YV+grggaokUUnQIDAQAB",
-	"manifest_version": 2,
-	"name": "NCUE新教務系統 Supporter",
-	"update_url": "https://clients2.google.com/service/update2/crx",
-	"version": "1.3.2",
-	"permissions": [
-		"tabs", "http://*/*"
-	]
+    "background": {
+        "scripts": ["background.js"]
+    },
+    "content_scripts": [{
+        "css": ["Bootstrap/css/bootstrap.min.css"],
+        "js": ["jquery/jquery-2.1.0.min.js", "Bootstrap/js/bootstrap.min.js", "main.js"],
+        "matches": [
+   "*://*.ncue.edu.tw/*/",
+   "*://*.ncue.edu.tw/*/*.aspx"
+  ]
+ }, {
+        "all_frames": true,
+        "js": ["start.js"],
+        "matches": [
+   "*://*.ncue.edu.tw/*/",
+   "*://*.ncue.edu.tw/*/*.aspx",
+   "*://*.ncue.edu.tw/other/ob/OB010.aspx*",
+   "*://*.ncue.edu.tw/information/News/left_news.*"
+  ],
+        "run_at": "document_start"
+ }, {
+        "all_frames": true,
+        "js": ["subAfter.js"],
+        "matches": ["*://*.ncue.edu.tw/information/News/left_news.*"]
+ }, {
+        "all_frames": true,
+        "js": ["supporter.js", "jquery/jquery-1.11.2.min.js"],
+        "matches": ["*://*.ncue.edu.tw/*"],
+        "run_at": "document_start"
+ }, {
+        "all_frames": true,
+        "js": ["supporter_after.js"],
+        "matches": ["*://*.ncue.edu.tw/STU/C/SC020.aspx?*"],
+        "run_at": "document_end"
+ }, {
+        "all_frames": true,
+        "js": ["supporter_after_tree.js"],
+        "matches": ["*://*.ncue.edu.tw/ST/SYS/Frame_Menu.aspx", "*://*.ncue.edu.tw/WP/SYS/Frame_Menu.aspx"],
+        "run_at": "document_end"
+ }, {
+        "all_frames": true,
+        "js": ["SC010.js"],
+        "matches": ["*://*.ncue.edu.tw/STU/C/SC010.aspx?*"]
+ }],
+    "content_security_policy": "script-src 'self' https://www.google.com https://checkout.google.com; object-src 'self'",
+    "description": "破解限用IE瀏覽器",
+    "icons": {
+        "128": "icon/icon128.png",
+        "16": "icon/icon16.png",
+        "48": "icon/icon48.png"
+    },
+    "key": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAhR4d9haTjBnxMYAuqSS4U7J/3JtanFb6Tft3mFf3UT409v2nwuIOMjuMLY6GGNjKMYEBHiXcAmzQ5ubzk4lmwJhDXzkNfSMz6myhPHv66UF2C4/TMBeAcpB+4DH/vN6gE2JcqfR4v/d0VJRm1Ze9w7MB4LYmpB4PvKxU8InorTyyOpGD7rMjpSsMANIuGNJDQlBs37n5aatMUkXnBekGOOMUaSPHIKFkzv0HDQh5yhGCjOAPOvk9W67NQJQnvbozTGXkH0HLffkp4SuX1afXanhRCalyZnp7viocBpt/KHksHuQ89L4yoHIrOR3SzXDhgqrinHV9YV+grggaokUUnQIDAQAB",
+    "manifest_version": 2,
+    "name": "NCUE新教務系統 Supporter",
+    "update_url": "https://clients2.google.com/service/update2/crx",
+    "version": "1.3.3",
+    "permissions": [
+  "tabs", "http://*/*"
+ ]
 }

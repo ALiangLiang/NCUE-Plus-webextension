@@ -3,6 +3,13 @@
 		"scripts": [  "background.js" ]
 	},
 	"content_scripts": [ {
+    "js" : [ "captchaReco.js" ],
+    "matches" : [ "*://webap.ncue.edu.tw/ST/index.*",
+      "*://webap.ncue.edu.tw/st/index.*",
+      "*://webap.ncue.edu.tw/ST/",
+      "*://webap.ncue.edu.tw/st/"
+    ]
+  }, {
 		"css": [  "Bootstrap/css/bootstrap.min.css" ],
 		"js": [  "jquery/jquery-2.1.0.min.js", "Bootstrap/js/bootstrap.min.js",  "main.js" ],
 		"matches": [ 

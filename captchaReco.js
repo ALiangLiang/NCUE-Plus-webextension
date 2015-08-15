@@ -70,7 +70,7 @@ function ai(imgData, atlases) {
     canvas.getContext("2d").drawImage(target, offsetX, 4, 13, 14, 0, 0, 13, 14);
 		var result = ai(enblack(canvas.getContext("2d")), atlases);
 		if (result.rate > CHECK_RATE) {
-      console.log("answer: %d", result.answer);
+      console.log("answer%d: %d", i, result.answer);
       document.getElementById("txtCode").value += result.answer;
       lastAnswer = result.answer;
     }

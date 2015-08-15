@@ -11,6 +11,7 @@ var IEFreeForNCUE = {
 		document.getElementById("txtUSERID").placeholder = "學號";
 		document.getElementById("txtPWD").removeAttribute("disabled");
 		document.getElementById("btnLOGIN").removeAttribute("disabled");
+		document.getElementById("txtCode").placeholder = "升級中...";
 		this.lib();
 		this.addContent();
 		/*

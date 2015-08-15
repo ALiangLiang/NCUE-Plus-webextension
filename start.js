@@ -23,8 +23,7 @@ var content = function() {
 			catch(err)
 			{}		
 		}
-	})
-	();
+	})();
 };
 var script = document.createElement("script");
 script.type = "text/javascript";

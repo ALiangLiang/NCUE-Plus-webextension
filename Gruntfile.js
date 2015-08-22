@@ -10,11 +10,24 @@ module.exports = function (grunt) {
 				}
 			}
 		},
+		chromeManifest : {
+			dist : {
+				options : {
+					background : {
+						exclude : [
+							'src/chromereload.js'
+						]
+					}
+				},
+				src : 'src',
+				dest : 'build'
+			}
+		},
 		copy : {
 			main : {
 				files : [{
 						expand : true,
-						src : ['icons/**', 'bootstrap/**', 'jquery/**', 'manifest.json', 'start.js', 'supporter_after_tree.js', 'supporter.js', 'announcementModal.js', 'infoInIndexPlat.js'],
+						src : ['**', '!chromereload.js'],
 						cwd : 'src/',
 						dest : 'build/',
 					}
@@ -22,16 +35,26 @@ module.exports = function (grunt) {
 			}
 		},
 		uglify : {
-			options : {
-				exceptionsFiles : ['src/announcementModal.js', 'src/infoInIndexPlat.js'],
-				screwIE8 : true
-			},
 			build : {
-				flatten : true,
-				expand : true,
-				src : ['src/*.js', 'src/supporter.js', '!src/start.js', '!src/supporter_after_tree.js', '!src/announcementModal.js', '!src/infoInIndexPlat.js'],
-				dest : 'build/',
-				ext : ".js"
+				options : {
+					screwIE8 : true,
+					banner : '/*! <%= pkg.name %> - v<%= pkg.version %> - ' +
+					'<%= grunt.template.today("yyyy-mm-dd") %> | Licensed under the MIT license*/\n'
+				},
+				files : [{
+						flatten : true,
+						expand : true,
+						src : [
+							'src/*.js',
+							'!src/chromereload.js',
+							'!src/supporter.js',
+							'!src/supporter_after_tree.js',
+							'!src/announcementModal.js',
+							'!src/infoInIndexPlat.js'
+						],
+						dest : 'build/'
+					}
+				]
 			}
 		},
 		clean : ["build/*"],
@@ -59,7 +82,7 @@ module.exports = function (grunt) {
 		},
 		bump : {
 			options : {
-				files : ['package.json', 'bower.json', 'src/manifest.json', 'build/manifest.json'],
+				files : ['package.json', 'bower.json', 'src/manifest.json'],
 				updateConfigs : [],
 
 				commit : true,
@@ -89,21 +112,44 @@ module.exports = function (grunt) {
 				src : 'package.json',
 				indent : '\t'
 			},
-			bower : {
+			bowera : {
 				src : 'package.json',
 				dest : 'bower.json',
-				fields : ['name', 'version', 'description', 'repository', 'home', 'license']
+				fields : 'name version description repository'
+			},
+			manifest : {
+				src : 'package.json',
+				dest : '/src/manifest.json',
+				fields : ['name', 'version', 'description', 'homepage > homepage_url']
 			}
+		},
+		jsonlint : {
+			sample : {
+				src : ['package.json', 'bower.json', 'src/manifest.json']
+			}
+		},
+		watch : {
+			scripts : {
+				files : ['src/*.*'],
+				tasks : ['jshint'],
+				options : {
+					spawn : false,
+					livereload : {
+						port : 35729
+					}
+				},
+			},
 		}
 	});
 
-	grunt.registerTask('default', ['jshint', 'clean', 'uglify', 'bower', 'copy']);
+	grunt.registerTask('default', ['jsonlint', 'jshint', 'clean', 'bower', 'copy', 'chromeManifest', 'uglify']);
 	grunt.registerTask('release', "Bump and pack to zip.", function (type) {
-		grunt.task.run['bump#{type||"patch"}', 'zip']
+		grunt.task.run['bump:#{type||"patch"}', 'default', 'zip']
 	});
 	grunt.registerTask('publish', []);
 
 	grunt.event.on('watch', function (action, filepath, target) {
+    
 		grunt.log.writeln(target + ': ' + filepath + ' has ' + action);
 	});
 };

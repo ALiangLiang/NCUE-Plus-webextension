@@ -13,3 +13,4 @@ window.onmessage = function (message) {
 	document.getElementById("announce-content").innerText = message.data.content;
 	$("#myModal").modal('show');
 };
+ 

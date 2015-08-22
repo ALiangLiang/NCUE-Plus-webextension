@@ -1,7 +1,7 @@
 {
   "name": "NCUE-Edu.-System-Supporter",
   "version": "1.4.1",
-  "description": "",
+  "description": "破解限用IE瀏覽器",
   "main": "main.js",
   "devDependencies": {
     "grunt": "^0.4.5",
@@ -14,6 +14,7 @@
     "grunt-contrib-nodeunit": "~0.4.1",
     "grunt-contrib-uglify": "~0.5.0",
     "grunt-contrib-watch": "^0.6.1",
+    "grunt-jsonlint": "^1.0.4",
     "grunt-update-json": "^0.2.1",
     "grunt-webstore-upload": "^0.8.5",
     "grunt-zip": "^0.17.0",

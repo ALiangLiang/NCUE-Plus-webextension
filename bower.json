@@ -2,9 +2,7 @@
 	"name" : "NCUE-Edu.-System-Supporter",
 	"version" : "1.4.1",
 	"homepage" : "https://github.com/ALiangLiang/NCUE-Edu.-System-Supporter",
-	"authors" : [
-		"ALiangLiang <david27072183@gmail.com>"
-	],
+	"authors" : "",
 	"license" : "MIT",
 	"ignore" : [
 		"**/.*",

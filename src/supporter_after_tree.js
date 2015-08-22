@@ -14,7 +14,7 @@ var content = function onloadEvent(ValueId){
 	 var obj2= event.srcElement.parentElement;     
 	 obj2.attachEvent("onclick",RtnFalse) ;   
 	 
-}
+};
 
 var script = document.createElement("script");
 script.type = "text/javascript";

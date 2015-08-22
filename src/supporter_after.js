@@ -1,28 +1,3 @@
-/*var content = function b () {
-	(function() {
-		var a = [];		
-		function getMenuId(id){
-			return id.getAttribute("tabitemid");
-		}
-		for(var i = 0; i < 5; i++) {
-			a[i] = document.getElementById("ctl00_ContentPlaceHolder2_panTab" + i);
-			if(getMenuId(a[i]) != null) {
-				document.getElementById(getMenuId(a[i])).setAttribute("onclick",  'document.getElementById("ctl00_ContentPlaceHolder2_panTab" + ' + i + ').style.display = "block";');
-			}
-		}
-	})();
-};
-var script = document.createElement("script");
-script.type = "text/javascript";
-script.textContent = content;
-document.documentElement.appendChild(script);
-
-var content2 = 'b();'
-var script = document.createElement("script");
-script.type = "text/javascript";
-script.textContent = content2;
-document.documentElement.appendChild(script);*/
-
 var content = function SetActive(menuid, activeIndex) {
 
 	var hiddenObj = document.all['tab_Hidden_' + menuid];
@@ -53,12 +28,12 @@ var content = function SetActive(menuid, activeIndex) {
 
 	hiddenObj.value = activeIndex;
 
-	if (menuid != null && activeIndex != null)
+	if (menuid !== null && activeIndex !== null)
 		MenuClickToSearch(menuid, activeIndex);
-}
+};
 
 function CCustomValidator_CGridMultiPanelctl00_ContentPlaceHolder2_T3_Panel4(objSource, objArgs) {
-	objGrid = document.all['ctl00_ContentPlaceHolder2_T3_Grid4'];
+	objGrid = document.all.ctl00_ContentPlaceHolder2_T3_Grid4;
 	if (objGrid) {
 		objArgs.IsValid = (objGrid.CurrRowCount() > 0);
 	}

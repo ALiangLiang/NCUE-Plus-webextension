@@ -1,0 +1,106 @@
+{
+	"name" : "NCUE新教務系統 Supporter",
+	"version" : "1.4.1",
+	"permissions" : [
+		"tabs", "http://*/*"
+	],
+	"background" : {
+		"scripts" : ["background.js"]
+	},
+	"content_scripts" : [{
+			"js" : ["breakOnlyIEBlockade.js", "captchaReco.js"],
+			"matches" : [
+				"*://*.ncue.edu.tw/*/*.*",
+				"*://*.ncue.edu.tw/*/"
+			],
+			"include_globs" : [
+				"*://webap.ncue.edu.tw/??/?????.????",
+				"*://webap.ncue.edu.tw/??/",
+				"*://webap?.ncue.edu.tw/??/?????.????",
+				"*://webap?.ncue.edu.tw/??/"
+			]
+		}, {
+			"css" : ["bootstrap/bootstrap.min.css"],
+			"js" : [
+				"jquery/jquery.min.js",
+				"bootstrap/bootstrap.min.js",
+				"announcementModal.js",
+				"advancedAnnouncement_main.js",
+				"infoInIndexPlat.js",
+				"infoInIndex.js"
+			],
+			"matches" : [
+				"*://*.ncue.edu.tw/*/*.*",
+				"*://*.ncue.edu.tw/*/"
+			],
+			"include_globs" : [
+				"*://webap.ncue.edu.tw/??/?????.????",
+				"*://webap.ncue.edu.tw/??/",
+				"*://webap?.ncue.edu.tw/??/?????.????",
+				"*://webap?.ncue.edu.tw/??/"
+			],
+			"run_at" : "document_end"
+		}, {
+			"all_frames" : true,
+			"js" : ["advancedAnnouncement_child.js"],
+			"matches" : ["*://*.ncue.edu.tw/information/News/left_news.html"],
+			"include_globs" : [
+				"*://webap.ncue.edu.tw/information/News/left_news.html",
+				"*://webap?.ncue.edu.tw/information/News/left_news.html"
+			],
+			"run_at" : "document_start"
+		}, {
+			"all_frames" : true,
+			"js" : ["start.js"],
+			"matches" : [
+				"*://*.ncue.edu.tw/*/",
+				"*://*.ncue.edu.tw/*/*.aspx",
+				"*://*.ncue.edu.tw/other/ob/OB010.aspx*"
+			],
+			"include_globs" : [
+				"*://webap.ncue.edu.tw*",
+				"*://webap?.ncue.edu.tw*"
+			],
+			"run_at" : "document_start"
+		}, {
+			"all_frames" : true,
+			"js" : ["supporter.js", "jquery/jquery.min.js"],
+			"matches" : ["*://*.ncue.edu.tw/*"],
+			"include_globs" : [
+				"*://webap.ncue.edu.tw*",
+				"*://webap?.ncue.edu.tw*"
+			],
+			"run_at" : "document_start"
+		}, {
+			"all_frames" : true,
+			"js" : ["supporter_after.js"],
+			"matches" : ["*://*.ncue.edu.tw/STU/C/SC020.aspx?*"],
+			"include_globs" : [
+				"*://webap.ncue.edu.tw*",
+				"*://webap?.ncue.edu.tw*"
+			],
+			"run_at" : "document_end"
+		}, {
+			"all_frames" : true,
+			"js" : ["supporter_after_tree.js"],
+			"matches" : [
+				"*://*.ncue.edu.tw/ST/SYS/Frame_Menu.aspx",
+				"*://*.ncue.edu.tw/WP/SYS/Frame_Menu.aspx"
+			],
+			"include_globs" : [
+				"*://*webap.edu.tw*",
+				"*://*webap?.edu.tw*"
+			],
+			"run_at" : "document_end"
+		}
+	],
+	"content_security_policy" : "script-src 'self' https://www.google.com https://checkout.google.com; object-src 'self'",
+	"description" : "破解限用IE瀏覽器",
+	"icons" : {
+		"128" : "icons/icon128.png",
+		"16" : "icons/icon16.png",
+		"48" : "icons/icon48.png"
+	},
+	"key" : "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAhR4d9haTjBnxMYAuqSS4U7J/3JtanFb6Tft3mFf3UT409v2nwuIOMjuMLY6GGNjKMYEBHiXcAmzQ5ubzk4lmwJhDXzkNfSMz6myhPHv66UF2C4/TMBeAcpB+4DH/vN6gE2JcqfR4v/d0VJRm1Ze9w7MB4LYmpB4PvKxU8InorTyyOpGD7rMjpSsMANIuGNJDQlBs37n5aatMUkXnBekGOOMUaSPHIKFkzv0HDQh5yhGCjOAPOvk9W67NQJQnvbozTGXkH0HLffkp4SuX1afXanhRCalyZnp7viocBpt/KHksHuQ89L4yoHIrOR3SzXDhgqrinHV9YV+grggaokUUnQIDAQAB",
+	"manifest_version" : 2
+}

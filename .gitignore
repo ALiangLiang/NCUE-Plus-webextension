@@ -1,5 +1,4 @@
 *.zip
-Gruntfile.js
 Thumbs.db
 /node_modules
 /bower_components

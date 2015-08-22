@@ -1,13 +1,13 @@
 https://chrome.google.com/webstore/detail/agbcepaalgmkkbfognoaonhippllckkc
-# NCUE·s±Ğ°È¨t²Î Supporter [![Build Status](https://travis-ci.org/ALiangLiang/NCUE-Edu.-System-Supporter.svg?branch=master)](https://travis-ci.org/ALiangLiang/NCUE-Edu.-System-Supporter)
+# NCUEæ–°æ•™å‹™ç³»çµ± Supporter [![Build Status](https://travis-ci.org/ALiangLiang/NCUE-Edu.-System-Supporter.svg?branch=master)](https://travis-ci.org/ALiangLiang/NCUE-Edu.-System-Supporter)
 
-##  «Ø¸m Build 
+##  å»ºç½® Build 
 
 ```bash
 grunt
 ```
 
-##  ºÊÅ¥ Watch 
+##  ç›£è½ Watch 
 
 ```bash
 grunt watch

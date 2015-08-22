@@ -1,4 +1,6 @@
 *.zip
-/displayImg
+Gruntfile.js
 Thumbs.db
-test.html
+/node_modules
+/bower_components
+/build

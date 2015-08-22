@@ -1,0 +1,37 @@
+{
+	"name" : "NCUE-Edu.-System-Supporter",
+	"version" : "1.4.1",
+	"homepage" : "https://github.com/ALiangLiang/NCUE-Edu.-System-Supporter",
+	"authors" : [
+		"ALiangLiang <david27072183@gmail.com>"
+	],
+	"license" : "MIT",
+	"ignore" : [
+		"**/.*",
+		"node_modules",
+		"bower_components",
+		"src",
+		"test",
+		"tests"
+	],
+	"dependencies" : {
+		"jquery" : "~2.1.4",
+		"bootstrap" : "~3.3.5"
+	},
+	"description" : "",
+	"repository" : {
+		"type" : "git",
+		"url" : "https://github.com/ALiangLiang/NCUE-Edu.-System-Supporter"
+	},
+	"exportsOverride" : {
+		"jquery" : {
+			"" : "dist/jquery.min.js"
+		},
+		"bootstrap" : {
+			"" : [
+				"dist/css/bootstrap.min.css",
+				"dist/js/bootstrap.min.js"
+			]
+		}
+	}
+}

@@ -35,26 +35,23 @@ module.exports = function (grunt) {
 			}
 		},
 		uglify : {
-			build : {
-				options : {
-					screwIE8 : true,
-					banner : '/*! <%= pkg.name %> - v<%= pkg.version %> - ' +
-					'<%= grunt.template.today("yyyy-mm-dd") %> | Licensed under the MIT license*/\n'
-				},
-				files : [{
-						flatten : true,
-						expand : true,
-						src : [
-							'src/*.js',
-							'!src/chromereload.js',
-							'!src/supporter.js',
-							'!src/supporter_after_tree.js',
-							'!src/announcementModal.js',
-							'!src/infoInIndexPlat.js'
-						],
-						dest : 'build/'
-					}
-				]
+			options : {
+				screwIE8 : true,
+				banner : '/*! <%= pkg.name %> - v<%= pkg.version %> - ' +
+				'<%= grunt.template.today("yyyy-mm-dd") %> | Licensed under the MIT license*/\n'
+			},
+			main : {
+				expand : true,
+				cwd : 'src',
+				src : [
+					'*.js',
+					'!announcementModal.js',
+					'!chromereload.js',
+					'!supporter.js',
+					'!supporter_after_tree.js',
+					'!infoInIndexPlat.js'
+				],
+				dest : 'build/'
 			}
 		},
 		clean : ["build/*"],
@@ -142,15 +139,15 @@ module.exports = function (grunt) {
 		}
 	});
 
-	grunt.registerTask('default', ['jsonlint', 'jshint', 'clean', 'bower', 'copy', 'chromeManifest', 'uglify']);
+	grunt.registerTask('default', ['jsonlint', 'jshint', 'clean', 'bower', 'copy', 'chromeManifest', 'uglify:main']);
 	grunt.registerTask('build', ['default']);
 	grunt.registerTask('release', "Bump and pack to zip.", function (type) {
 		grunt.task.run['bump:#{type||"patch"}', 'default', 'zip']
 	});
 	grunt.registerTask('publish', []);
-  
+
 	grunt.event.on('watch', function (action, filepath, target) {
-    
+
 		grunt.log.writeln(target + ': ' + filepath + ' has ' + action);
 	});
 };

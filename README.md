@@ -24,4 +24,4 @@ grunt watch
 
 ## 授權條款 License
 
-[MIT license](http://opensource.org/licenses/mit-license.php)
+[MIT license](https://raw.githubusercontent.com/ALiangLiang/NCUE-Edu.-System-Supporter/master/LICENSE)

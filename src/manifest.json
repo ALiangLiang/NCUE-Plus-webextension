@@ -1,6 +1,6 @@
 {
 	"name" : "NCUE新教務系統 Supporter",
-	"description" : "破解限用IE瀏覽器",
+	"description" : "讓彰師大教務系統能在Chrome上使用的利器。",
 	"version" : "1.4.1",
 	"background" : {
 		"scripts" : ["chromereload.js"]
@@ -100,7 +100,7 @@
 	"permissions" : [
 		"tabs", "http://*/*"
 	],
-	"content_security_policy" : "script-src 'self' https://www.google.com https://checkout.google.com; object-src 'self'",
+	"content_security_policy" : "script-src 'self' https://ssl.google-analytics.com https://www.google.com https://checkout.google.com; object-src 'self'",
 	"key" : "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAhR4d9haTjBnxMYAuqSS4U7J/3JtanFb6Tft3mFf3UT409v2nwuIOMjuMLY6GGNjKMYEBHiXcAmzQ5ubzk4lmwJhDXzkNfSMz6myhPHv66UF2C4/TMBeAcpB+4DH/vN6gE2JcqfR4v/d0VJRm1Ze9w7MB4LYmpB4PvKxU8InorTyyOpGD7rMjpSsMANIuGNJDQlBs37n5aatMUkXnBekGOOMUaSPHIKFkzv0HDQh5yhGCjOAPOvk9W67NQJQnvbozTGXkH0HLffkp4SuX1afXanhRCalyZnp7viocBpt/KHksHuQ89L4yoHIrOR3SzXDhgqrinHV9YV+grggaokUUnQIDAQAB",
 	"manifest_version" : 2
 }

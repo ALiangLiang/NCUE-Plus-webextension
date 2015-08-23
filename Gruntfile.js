@@ -143,11 +143,12 @@ module.exports = function (grunt) {
 	});
 
 	grunt.registerTask('default', ['jsonlint', 'jshint', 'clean', 'bower', 'copy', 'chromeManifest', 'uglify']);
+	grunt.registerTask('build', ['default']);
 	grunt.registerTask('release', "Bump and pack to zip.", function (type) {
 		grunt.task.run['bump:#{type||"patch"}', 'default', 'zip']
 	});
 	grunt.registerTask('publish', []);
-
+  
 	grunt.event.on('watch', function (action, filepath, target) {
     
 		grunt.log.writeln(target + ': ' + filepath + ' has ' + action);

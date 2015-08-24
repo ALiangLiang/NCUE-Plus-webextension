@@ -1,7 +1,7 @@
 {
   "name": "NCUE-Edu.-System-Supporter",
   "description": "讓彰師大教務系統能在Chrome上使用的利器。",
-  "version": "1.4.1",
+  "version": "1.4.2",
   "devDependencies": {
     "grunt": "^0.4.5",
     "grunt-bower-task": "^0.4.0",

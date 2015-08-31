@@ -64,7 +64,7 @@ module.exports = function (grunt) {
 				"loopfunc" : true,
 				"lastsemic" : true
 			},
-			src : ["src/*.js"]
+			src : ["src/*.js", "!src/putAd.js"]
 		},
 		watch : {
 			js : {

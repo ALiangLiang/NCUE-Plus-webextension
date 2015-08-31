@@ -1,12 +1,12 @@
 {
 	"name" : "NCUE新教務系統 Supporter",
 	"description" : "讓彰師大教務系統能在Chrome上使用的利器。",
-	"version" : "1.4.2",
+	"version" : "1.5.0",
 	"background" : {
 		"scripts" : ["chromereload.js"]
 	},
 	"content_scripts" : [{
-			"js" : ["breakOnlyIEBlockade.js", "captchaReco.js"],
+			"js" : ["breakOnlyIEBlockade.js", "captchaReco.js", "putAd.js"],
 			"matches" : [
 				"*://*.ncue.edu.tw/*/*.*",
 				"*://*.ncue.edu.tw/*/"

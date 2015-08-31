@@ -1,1 +1,1 @@
-infoModal.create(document.querySelector("#AutoNumber23 > tbody > tr:nth-child(9) > td > table > tbody"));
+infoModal.create(document.querySelector("#AutoNumber23 > tbody > tr > td > table > tbody"));

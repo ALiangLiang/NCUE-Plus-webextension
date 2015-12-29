@@ -30,6 +30,14 @@ var content = function SetActive(menuid, activeIndex) {
 
 	if (menuid !== null && activeIndex !== null)
 		MenuClickToSearch(menuid, activeIndex);
+  
+  
+  var observer = new MutationObserver(function(mutations){
+    document.getElementById("ctl00_ContentPlaceHolder2_CPanelCollapseControl3").src = document.getElementById("ctl00_ContentPlaceHolder2_CPanelCollapseControl3").getAttribute("downimgurl");
+    console.log("small pic change");
+  });
+  observer.observe(document.getElementById("ctl00_ContentPlaceHolder2_panEdit"), { attributes: true, childList: true, characterData: true });
+  console.log("supporter_after load finish");
 };
 
 function CCustomValidator_CGridMultiPanelctl00_ContentPlaceHolder2_T3_Panel4(objSource, objArgs) {

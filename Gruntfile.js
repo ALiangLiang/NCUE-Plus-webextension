@@ -14,8 +14,9 @@ module.exports = function (grunt) {
 			dist : {
 				options : {
 					background : {
+            target: 'background.js',
 						exclude : [
-							'src/chromereload.js'
+							'chromereload.js',
 						]
 					}
 				},
@@ -101,7 +102,7 @@ module.exports = function (grunt) {
 			'using-cwd' : {
 				cwd : 'build/',
 				src : ['build/**'],
-				dest : 'NCUE-Lectures-Notifier-latest.zip'
+				dest : 'NCUE-Edu.-System-Supporter-latest.zip'
 			}
 		},
 		update_json : {

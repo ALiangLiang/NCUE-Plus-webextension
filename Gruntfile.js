@@ -49,6 +49,7 @@ module.exports = function (grunt) {
 					'!announcementModal.js',
 					'!chromereload.js',
 					'!supporter.js',
+					'!supporter_after.js',
 					'!supporter_after_tree.js',
 					'!infoInIndexPlat.js'
 				],

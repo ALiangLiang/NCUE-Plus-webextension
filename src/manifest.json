@@ -1,7 +1,7 @@
 {
 	"name" : "NCUE教務系統 Supporter",
 	"description" : "讓彰師大教務系統能在Chrome上使用的利器。",
-	"version" : "1.5.1",
+	"version" : "1.5.3",
 	"background" : {
 		"scripts" : ["chromereload.js", "background.js"]
 	},
@@ -50,7 +50,12 @@
 		}, {
 			"all_frames" : true,
 			"js" : ["printTimetable.js"],
-			"matches" : ["*://*.ncue.edu.tw/*/AP/*", "http://webap.ncue.edu.tw/STU/ap/201509180953295329-S0254003.htm"]
+			"css" : ["printTimetable.css"],
+			"matches" : ["*://*.ncue.edu.tw/*/*/*.htm"],
+			"include_globs" : [
+				"*://webap.ncue.edu.tw/???/??/*.htm",
+				"*://webap?.ncue.edu.tw/???/??/*.htm"
+			]
 		}, {
 			"all_frames" : true,
 			"js" : ["start.js"],
@@ -76,7 +81,7 @@
 		}, {
 			"all_frames" : true,
 			"js" : ["supporter_after.js"],
-			"matches" : ["*://*.ncue.edu.tw/STU/C/SC010.aspx?*"],
+			"matches" : ["*://*.ncue.edu.tw/STU/C/SC010.aspx?*", "*://*.ncue.edu.tw/STU/C/SC020.aspx?*"],
 			"include_globs" : [
 				"*://webap.ncue.edu.tw*",
 				"*://webap?.ncue.edu.tw*"

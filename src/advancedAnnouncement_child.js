@@ -44,13 +44,13 @@ var content = function () {
 				localAnn.content = curAnn.content;
 			}
 
-			window.onmessage = function (message) {
+			window.addEventListener('message', function (message) {
 				if (message.data.status === "seen") {
 					console.log("seen");
 					localAnn.seen = true;
 					localStorage.announcement = JSON.stringify(localAnn);
 				}
-			};
+			});
 
 			var body = document.body;
 			if (body.childNodes[0].nodeType === 3) {

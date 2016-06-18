@@ -1,7 +1,20 @@
 language: node_js
-node_js:
-  - 'iojs'
-  - '0.12'
-  - '0.10'
+node_js: "node"
+sudo: false
+env:
+  matrix:
+  - BROWSER=chromium EXT=zip
+  - BROWSER=firefox EXT=xpi
 before_script:
-  - npm install -g grunt-cli
+- npm install grunt-cli -g
+script: grunt && grunt zip
+deploy:
+  provider: releases
+  api_key:
+    secure: c2ailgNR+VRNMUMJKY/1grSfxbzEUgnpyp2HqCeHVEfdmAAw8NXMc6yBGl2eCtjBi6G8KPWg0GTIitH09alQfEFBWd/8uJ0CRYJ3Vt7fLXgEMzLPIg4akeo7++cPyWXEKR7uJGqo9ZROH8r/AIvebbONcwj962h3MSeebzaWI3VnZfLRyTWemnSEXsynQYcBmk1gyDngNYA83CVUgkblL1kfygZkv9GA1VBjWslOkfSUViRCRB2oRY6vN3LsRZLm8lK/BJczH5WZYtreZrwfHbkjPYFcZaZCZ3SzXCsQjB7+KNvMj9SotLWW/Wl1+wao4S/hD+E6VWWNjES88L70cIdofdRxTl8lWz3a95xvVM+7Tplj+DgvQJ4rfsBGV1tGHubS/2hwKOB3Y40u61necPi52uJBMezJYpRiIxnPb61bQ7jmjlbzzzzdoR1AqbbfhP3yUghhAQBRn98XPLk2gDWkfmdeoWpXaH7I6KDJg0f3vBQqrwsuQ3wai5NH3jsQ59b5dtT5ivP95GJWyVaUSw7ny8swDQsej1/PpamhPri5gAnlEgblPSXxcIjRiS+zkW1JdsOs6lfjKrWv5sIVLRpne5K8bW3rv0u784dGm4A9G+44/qEll3RefxOWEPgabwAKExhjV18fJDTImi5dXskTzgonuHNCt9aay3EVmjU=
+  file: NCUE-Edu.-System-Supporter-latest.${EXT}
+  skip_cleanup: true
+  on:
+    repo: ALiangLiang/NCUE-Edu.-System-Supporter
+    tags: true
+    all_branches: true

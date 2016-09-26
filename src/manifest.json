@@ -7,6 +7,12 @@
     "scripts" : ["chromereload.js", "background.js"]
   },
   "content_scripts" : [{
+      "all_frames" : true,
+      "js" : ["captchaReco.js"],
+      "matches" : [
+        "*://*.ncue.edu.tw/STU/C/SC060.aspx?*"
+      ]
+    }, {
       "js" : ["breakOnlyIEBlockade.js", "captchaReco.js", "createLoginBtn.js", "putAd.js"],
       "matches" : [
         "*://*.ncue.edu.tw/*/*.*",

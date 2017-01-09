@@ -2,7 +2,7 @@
   "name" : "NCUE教務系統 Supporter",
   "description" : "讓彰師大教務系統能在Chrome上使用的利器。",
   "homepage_url" : "https://github.com/ALiangLiang/NCUE-Edu.-System-Supporter",
-  "version" : "1.6.2",
+  "version" : "1.6.3",
   "background" : {
     "scripts" : ["chromereload.js", "background.js"]
   },
@@ -10,7 +10,7 @@
       "all_frames" : true,
       "js" : ["captchaReco.js"],
       "matches" : [
-        "*://*.ncue.edu.tw/STU/C/SC060.aspx?*"
+        "*://*.ncue.edu.tw/STU/C/SC010.aspx?*"
       ]
     }, {
       "js" : ["breakOnlyIEBlockade.js", "captchaReco.js", "createLoginBtn.js", "putAd.js"],

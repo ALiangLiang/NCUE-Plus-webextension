@@ -6,7 +6,7 @@
 
 see https://chrome.google.com/webstore/detail/agbcepaalgmkkbfognoaonhippllckkc
 
-Sourse Code: https://github.com/ALiangLiang/NCUE-Edu.-System-Supporter
+Source Code: https://github.com/ALiangLiang/NCUE-Edu.-System-Supporter
 
 ##  建置 Build 
 

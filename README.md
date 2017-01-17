@@ -1,5 +1,14 @@
 # NCUE教務系統 Supporter [![Build Status](https://travis-ci.org/ALiangLiang/NCUE-Edu.-System-Supporter.svg?branch=master)](https://travis-ci.org/ALiangLiang/NCUE-Edu.-System-Supporter)
 
+## 產品特色 Feature
+
+- 解鎖IE限制</li>
+- 自動填入圖形驗證碼</li>
+- 「已讀」系統首頁的彈跳公告</li>
+- 修復選課操作系統</li>
+- 修復課表下載按鈕</li>
+- 可一鍵全選教學意見反應問卷選項</li>
+
 ## 產品安裝 Production installation
 
 [![Install from Web Store](https://raw.githubusercontent.com/ALiangLiang/NCUE-Edu.-System-Supporter/master/tryitnowbutton_small.png)](https://chrome.google.com/webstore/detail/agbcepaalgmkkbfognoaonhippllckkc)

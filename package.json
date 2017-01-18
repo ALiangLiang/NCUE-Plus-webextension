@@ -31,5 +31,8 @@
   "bugs": {
     "url": "https://github.com/ALiangLiang/NCUE-Edu.-System-Supporter/issues"
   },
-  "homepage": "https://github.com/ALiangLiang/NCUE-Edu.-System-Supporter"
+  "homepage": "https://github.com/ALiangLiang/NCUE-Edu.-System-Supporter",
+  "dependencies": {
+    "grunt-contrib-uglify": "^2.0.0"
+  }
 }

@@ -1,4 +1,4 @@
-# NCUE教務系統 Supporter [![Build Status](https://travis-ci.org/ALiangLiang/NCUE-Edu.-System-Supporter.svg?branch=master)](https://travis-ci.org/ALiangLiang/NCUE-Edu.-System-Supporter)
+# NCUE Plus [![Build Status](https://travis-ci.org/ALiangLiang/NCUE-Plus-webextension.svg?branch=master)](https://travis-ci.org/ALiangLiang/NCUE-Plus-webextension)
 
 ## 產品特色 Feature
 
@@ -8,14 +8,16 @@
 - 修復選課操作系統</li>
 - 修復課表下載按鈕</li>
 - 可一鍵全選教學意見反應問卷選項</li>
+- 在課程查詢頁面中，增加課程評論系統</li>
+
 
 ## 產品安裝 Production installation
 
-[![Install from Web Store](https://raw.githubusercontent.com/ALiangLiang/NCUE-Edu.-System-Supporter/master/tryitnowbutton_small.png)](https://chrome.google.com/webstore/detail/agbcepaalgmkkbfognoaonhippllckkc)
+[![Install from Web Store](https://raw.githubusercontent.com/ALiangLiang/NCUE-Plus-webextension/master/tryitnowbutton_small.png)](https://chrome.google.com/webstore/detail/agbcepaalgmkkbfognoaonhippllckkc)
 
 see https://chrome.google.com/webstore/detail/agbcepaalgmkkbfognoaonhippllckkc
 
-Source Code: https://github.com/ALiangLiang/NCUE-Edu.-System-Supporter
+Source Code: https://github.com/ALiangLiang/NCUE-Plus-webextension
 
 ##  建置 Build 
 
@@ -34,6 +36,10 @@ grunt watch
 ```
 
 ##  更新記錄
+
+- ##### 版本2.0.0
+1. 新增 課程評論系統
+2. 修正 程式名稱 從 NCUE新教務系統 Supporter → NCUE Plus
 
 - ##### 版本1.7.0
 1. 新增 自動全選教學意見反應問卷
@@ -113,4 +119,4 @@ grunt watch
 
 ## 授權條款 License
 
-[MIT license](https://raw.githubusercontent.com/ALiangLiang/NCUE-Edu.-System-Supporter/master/LICENSE)
+[MIT license](https://raw.githubusercontent.com/ALiangLiang/NCUE-Plus-webextension/master/LICENSE)

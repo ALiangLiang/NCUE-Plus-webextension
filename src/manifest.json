@@ -1,10 +1,10 @@
 {
-  "name": "NCUE教務系統 Supporter",
+  "name": "NCUE Plus",
   "description": "讓彰師大教務系統能在Chrome上使用的利器。",
-  "homepage_url": "https://github.com/ALiangLiang/NCUE-Edu.-System-Supporter",
-  "version": "1.7.0",
+  "homepage_url": "https://github.com/ALiangLiang/NCUE-Plus-webextension",
+  "version": "2.0.0",
   "background": {
-    "scripts": ["chromereload.js", "background.js"]
+    "scripts": ["chromereload.js", "background.js", "course/background.js"]
   },
   "content_scripts": [{
     "all_frames": true,
@@ -112,6 +112,28 @@
     "js": ["autoFillInQuestionnaire.js"],
     "matches": [
       "*://*.ncue.edu.tw/STU/G/SG020.aspx?*"
+    ]
+  }, {
+    "js": [
+      "course/lib/platform.js",
+      "course/lib/gapi_auth2.js",
+      "course/lib/gapi_signin2.js",
+      "course/lib/jquery.min.js",
+      "course/lib/bootstrap.min.js",
+      "course/lib/snackbar.min.js",
+      "course/lib/vue.min.js",
+      "course/index.js"
+    ],
+    "css": [
+      "course/lib/bootstrap-material-design.min.css",
+      "course/lib/snackbar.min.css",
+      "course/lib/ripples.min.css",
+      "course/lib/icon.css",
+      "course/index.css"
+    ],
+    "run_at": "document_end",
+    "matches": [
+      "*://*.ncue.edu.tw/deanv2/other/ob010"
     ]
   }],
   "icons": {

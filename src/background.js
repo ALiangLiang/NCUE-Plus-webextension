@@ -4,6 +4,9 @@ chrome.runtime.onInstalled.addListener(function (details) {
     chrome.tabs.create({
       url : "firstRun.html"
     });
+    chrome.tabs.create({
+      url: 'http://webap.ncue.edu.tw/ST/'
+    });
   } else if (details.reason == "update") {
     var thisVersion = chrome.runtime.getManifest().version;
     if (thisVersion === "1.5.3")

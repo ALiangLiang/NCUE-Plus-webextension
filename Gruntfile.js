@@ -210,13 +210,13 @@ module.exports = function(grunt) {
       'chrome': {
         cwd: 'platform/chrome/',
         src: ['platform/chrome/**'],
-        dest: 'NCUE-Edu.-System-Supporter-latest.zip',
+        dest: 'NCUE-Plus-webextension-latest.zip',
         compression: 'DEFLATE'
       },
       'firefox': {
         cwd: 'platform/firefox/',
         src: ['platform/firefox/**'],
-        dest: 'NCUE-Edu.-System-Supporter-latest.xpi',
+        dest: 'NCUE-Plus-webextension-latest.xpi',
         compression: 'DEFLATE'
       }
     },

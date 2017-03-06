@@ -9,7 +9,7 @@ const infoModal = {
 				<div class="alert alert-info" style="margin-bottom:0px">
 					<p>
 						您正在使用由${'學生會'.link('https://www.facebook.com/128794183874722/')}-資訊部提供的
-						<br>「${"NCUE教務系統 Supporter (非官方)".link("https://chrome.google.com/webstore/detail/agbcepaalgmkkbfognoaonhippllckkc")}」擴充功能
+						<br>「${"NCUE Plus (非官方)".link("https://chrome.google.com/webstore/detail/agbcepaalgmkkbfognoaonhippllckkc")}」擴充功能
 					</p>
 				</div>
 	    </td>

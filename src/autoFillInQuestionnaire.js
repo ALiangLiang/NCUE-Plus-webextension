@@ -4,7 +4,7 @@ if (confirmBtn) {
   confirmBtn.checked = true;
   const span = document.createElement('span');
   span.style = 'color:red';
-  span.innerText = '。此自動"同意"為"NCUE教務系統 Supporter"所提供。';
+  span.innerText = '。此自動"同意"為"NCUE Plus"所提供。';
   document.querySelector('#ctl00_ContentPlaceHolder3_E_rbtn_SAns_0').appendChild(span);
 
   const
@@ -26,5 +26,5 @@ if (confirmBtn) {
     table.appendChild(btn);
   }
   table.style = 'color:red';
-  table.appendChild(document.createTextNode('此全選功能為"NCUE教務系統 Supporter"所提供。'));
+  table.appendChild(document.createTextNode('此全選功能為"NCUE Plus"所提供。'));
 }

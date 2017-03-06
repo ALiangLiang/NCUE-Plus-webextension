@@ -1,0 +1,77 @@
+.btn.btn-info.btn-xs.btn-block {
+    color: white;
+}
+
+.panel.panel-info>.panel-heading {
+    color: white;
+}
+
+.btn.btn-success {
+    color: white;
+}
+
+#logoutBtn {
+    float: right;
+}
+
+#signin {
+    margin-top: 11px;
+    float: right;
+}
+
+.model-btn {
+    margin-top: 0px;
+}
+
+.modal-header {
+    background-color: #3F51B5;
+    border-radius: 6px 6px 0px 0px;
+    padding-bottom: 31px !important;
+    margin-bottom: 11px;
+}
+
+.modal-title {
+    color: white;
+    font-size: x-large;
+}
+
+#requestBtn {
+    background-color: #00BCD4;
+    color: white;
+    float: left;
+}
+
+#collapseBtn {
+    float: right;
+}
+
+.panel {
+    box-shadow: rgba(0, 0, 0, 0.117647) 0px 1px 6px 0px, rgba(0, 0, 0, 0.117647) 0px 1px 6px 0px !important;
+    border-radius: 2px !important;
+    border-width: 0px !important;
+    border-style: initial !important;
+    border-color: initial !important;
+    border-image: initial !important;
+}
+
+.checkbox label {
+    padding-left: 0px !important;
+}
+
+body>.container-fluid {
+    margin-top: 30px;
+}
+
+.btn.btn-info>.material-icons {
+    color: black;
+}
+
+.panel-body>pre {
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    font-family: inherit;
+    background-color: initial;
+    border: initial;
+    color: initial;
+    border-left: 5px solid #bbdefb;
+}

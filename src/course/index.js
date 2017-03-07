@@ -1,5 +1,5 @@
 const
-  DOMAIN = 'http://aliangliang.com.tw:3000',
+  DOMAIN = 'http://aliangliang.com.tw:3001',
   target = document.getElementById('result'),
   loadingIcon = {
     start: () => document.getElementById('wait').style.display = '',
@@ -137,24 +137,23 @@ const loginVm = new Vue({
   },
   methods: {
     login: function() {
-      console.log(this.isLogin);
       if (this.isLogin) {
-        gapi.auth2.getAuthInstance().signOut()
+        return gapi.auth2.getAuthInstance().signOut()
           .then(() => {
-            this.isLogin = false;
             $.snackbar({
               content: '成功登出。'
             });
             console.log('logout');
+            return this.isLogin = false;
           });
       } else {
-        gapi.auth2.getAuthInstance().signIn()
+        return gapi.auth2.getAuthInstance().signIn()
           .then(() => {
-            this.isLogin = true;
             $.snackbar({
               content: '成功登入。'
             });
             console.log('login');
+            return this.isLogin = true;
           });
       }
     }
@@ -172,6 +171,9 @@ const vm = new Vue({
   created: function() {
     $('[data-toggle="tooltip"]').tooltip();
     console.log('Model 實例初始化完畢');
+  },
+  updated: function() {
+    $('[data-toggle="tooltip"]').tooltip();
   },
   methods: {
     thumb: function(id, event) {
@@ -200,7 +202,13 @@ const vm = new Vue({
             $.snackbar({
               content: (!isActive) ? '已認同' : '取消認同'
             });
-          }
+          } else if (res.status === 401) {
+            $.snackbar({
+              content: '尚未登入'
+            });
+            return loginVm.login();
+          } else if (res.status === 403)
+            currentTarget.classList.toggle('active', true);
         });
     },
     request: function(id, event) {
@@ -271,6 +279,8 @@ const
             .then((json) => {
               loadingIcon.stop();
               vm.id = json.courseId;
+              vm.className = this.getAttribute('data-class');
+              vm.courseName = this.getAttribute('data-course-name');
               vm.title = this.getAttribute('data-header');
               vm.requestCount = json.requestCount;
               document.getElementById('requestCount').innerText = json.requestCount;
@@ -285,7 +295,8 @@ const
                   thumbCount: e.thumbCount
                 };
               });
-              commentBtn.onclick = () => {
+              commentBtn.onclick = function() {
+                console.log(gapi.auth2.getAuthInstance().currentUser.get().getAuthResponse().id_token);
                 if (commentForm.value.trim() === '')
                   return;
                 loadingIcon.start();
@@ -296,15 +307,15 @@ const
                       'Content-Type': 'application/json'
                     },
                     body: JSON.stringify({
-                      courseClass: this.getAttribute('data-class'),
-                      courseName: this.getAttribute('data-course-name'),
+                      courseClass: vm.className,
+                      courseName: vm.courseName,
                       content: commentForm.value,
                       anonymous: anonymousBtn.checked,
                       token: gapi.auth2.getAuthInstance().currentUser.get().getAuthResponse().id_token,
                     })
                   }))
-                  .then((response) => [response.json(), response.ok])
-                  .then(([promise, ok]) => {
+                  .then((response) => [response.json(), response.ok, response.status])
+                  .then(([promise, ok, statusCode]) => {
                     loadingIcon.stop();
                     if (ok) {
                       return promise.then((result) => {
@@ -328,7 +339,12 @@ const
                       $.snackbar({
                         content: '發表評論失敗'
                       });
-                      gapi.auth2.getAuthInstance().signIn();
+                      if (statusCode === 403)
+                        loginVm.login()
+                        .then((isLogin) => {
+                          if (isLogin)
+                            this.click();
+                        });
                     }
                   });
               };

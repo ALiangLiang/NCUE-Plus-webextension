@@ -1,5 +1,4 @@
 const
-  DOMAIN = 'http://aliangliang.com.tw:3001',
   target = document.getElementById('result'),
   loadingIcon = {
     start: () => document.getElementById('wait').style.display = '',
@@ -188,34 +187,27 @@ const vm = new Vue({
       const
         currentTarget = event.currentTarget,
         isActive = currentTarget.classList.contains('active'),
-        url = (!isActive) ? DOMAIN + '/thumb' : `${DOMAIN}/thumb/${id}`,
+        url = (!isActive) ? '/thumb' : `/thumb/${id}`,
         method = (!isActive) ? 'POST' : 'DELETE',
-        body = JSON.stringify({
+        body = {
           commentId: (!isActive) ? id : void 0,
           token: gapi.auth2.getAuthInstance().currentUser.get().getAuthResponse().id_token,
-        });
-      fetch(url, {
-          method: method,
-          headers: {
-            'Accept': 'application/json',
-            'Content-Type': 'application/json'
-          },
-          body: body
-        })
-        .then((res) => {
-          if (res.ok) {
+        };
+      new RequestAPI(url, method, body)
+        .then(([json, ok, statusCode]) => {
+          if (ok) {
             const num = currentTarget.querySelector('span.badge');
             num.innerText = (!isActive) ? Number(num.innerText) + 1 : Number(num.innerText) - 1;
             currentTarget.classList.toggle('active', !isActive);
             $.snackbar({
               content: (!isActive) ? '已認同' : '取消認同'
             });
-          } else if (res.status === 401) {
+          } else if (statusCode === 401) {
             $.snackbar({
               content: '尚未登入'
             });
             return loginVm.login();
-          } else if (res.status === 403)
+          } else if (statusCode === 403)
             currentTarget.classList.toggle('active', true);
         });
     },
@@ -225,20 +217,13 @@ const vm = new Vue({
         isActive = currentTarget.classList.contains('active'),
         url = (!isActive) ? DOMAIN + '/request' : `${DOMAIN}/request/${id}`,
         method = (!isActive) ? 'POST' : 'DELETE',
-        body = JSON.stringify({
+        body = {
           courseId: (!isActive) ? id : void 0,
           token: gapi.auth2.getAuthInstance().currentUser.get().getAuthResponse().id_token,
-        });
-      fetch(url, {
-          method: method,
-          headers: {
-            'Accept': 'application/json',
-            'Content-Type': 'application/json'
-          },
-          body: body
-        })
-        .then((res) => {
-          if (res.ok) {
+        };
+      new RequestAPI(url, method, body)
+        .then(([json, ok, statusCode]) => {
+          if (ok) {
             const num = currentTarget.querySelector('span.badge');
             num.innerText = (!isActive) ? Number(num.innerText) + 1 : Number(num.innerText) - 1;
             currentTarget.classList.toggle('active', !isActive);
@@ -282,9 +267,8 @@ const
         btn.setAttribute('data-header', `${courseClass} ${courseName}`);
         btn.onclick = function() {
           loadingIcon.start();
-          fetch(`${DOMAIN}/course?class=${this.getAttribute('data-class')}&courseName=${this.getAttribute('data-course-name')}`)
-            .then((response) => response.json())
-            .then((json) => {
+          new RequestAPI(`/course?class=${this.getAttribute('data-class')}&courseName=${this.getAttribute('data-course-name')}`, 'GET')
+            .then(([json]) => {
               loadingIcon.stop();
               vm.id = json.courseId;
               vm.className = this.getAttribute('data-class');
@@ -308,41 +292,31 @@ const
                 if (commentForm.value.trim() === '')
                   return;
                 loadingIcon.start();
-                fetch(new Request(DOMAIN + '/comment', {
-                    method: 'POST',
-                    headers: {
-                      'Accept': 'application/json',
-                      'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify({
-                      courseClass: vm.className,
-                      courseName: vm.courseName,
-                      content: commentForm.value,
-                      anonymous: anonymousBtn.checked,
-                      token: gapi.auth2.getAuthInstance().currentUser.get().getAuthResponse().id_token,
-                    })
-                  }))
-                  .then((response) => [response.json(), response.ok, response.status])
-                  .then(([promise, ok, statusCode]) => {
+                new RequestAPI('/comment', 'POST', {
+                    courseClass: vm.className,
+                    courseName: vm.courseName,
+                    content: commentForm.value,
+                    anonymous: anonymousBtn.checked,
+                    token: gapi.auth2.getAuthInstance().currentUser.get().getAuthResponse().id_token,
+                  })
+                  .then(([json, ok, statusCode]) => {
                     loadingIcon.stop();
                     if (ok) {
-                      return promise.then((result) => {
-                        const
-                          date = new Date(result.time),
-                          timeString = `${date.getYear() + 1900}/${date.getMonth() + 1}/${date.getDate()} ${padLeft(date.getHours(),2)}:${padLeft(date.getMinutes(), 2)}`,
-                          newComment = {
-                            id: result.id,
-                            title: `${result.author} ${timeString}`,
-                            content: result.content,
-                            thumbCount: result.thumbCount
-                          };
-                        vm.comments.unshift(newComment);
-                        commentForm.value = '';
-                        $.snackbar({
-                          content: '成功發表評論'
-                        });
-                        $('#comment-form').collapse('hide');
+                      const
+                        date = new Date(json.time),
+                        timeString = `${date.getYear() + 1900}/${date.getMonth() + 1}/${date.getDate()} ${padLeft(date.getHours(),2)}:${padLeft(date.getMinutes(), 2)}`,
+                        newComment = {
+                          id: json.id,
+                          title: `${json.author} ${timeString}`,
+                          content: json.content,
+                          thumbCount: json.thumbCount
+                        };
+                      vm.comments.unshift(newComment);
+                      commentForm.value = '';
+                      $.snackbar({
+                        content: '成功發表評論'
                       });
+                      $('#comment-form').collapse('hide');
                     } else {
                       $.snackbar({
                         content: '發表評論失敗'

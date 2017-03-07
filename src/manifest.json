@@ -123,6 +123,7 @@
       "course/lib/bootstrap.min.js",
       "course/lib/snackbar.min.js",
       "course/lib/vue.min.js",
+      "course/RequestAPI.js",
       "course/index.js"
     ],
     "css": [

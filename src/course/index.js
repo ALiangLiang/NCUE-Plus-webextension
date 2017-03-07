@@ -26,7 +26,15 @@ Vue.component('model', {
               data-toggle="tooltip"
               data-placement="left"
               data-original-title="跪求評論">跪求評論<span id="requestCount" class="badge">{{requestCount}}</span></button>
-            <button id="collapseBtn" class="btn btn-danger btn-fab" type="button" data-toggle="collapse" data-target="#comment-form" aria-expanded="false" aria-controls="comment-form"><i class="material-icons">add</i></button>
+            <button
+              v-on:click.stop="$('#comment-form').collapse('toggle')"
+              id="collapseBtn"
+              class="btn btn-danger btn-fab"
+              type="button"
+              data-toggle="collapse"
+              data-target="#comment-form"
+              aria-expanded="false"
+              aria-controls="comment-form"><i class="material-icons">add</i></button>
           </div>
           <div id="comment-body" class="modal-body">
             <div class="collapse" id="comment-form">

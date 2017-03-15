@@ -1,12 +1,9 @@
 const
-  target = document.getElementById('result'),
   loadingIcon = {
     start: () => document.getElementById('wait').style.display = '',
     stop: () => document.getElementById('wait').style.display = 'none'
   },
   padLeft = (str, lenght) => (str.toString().length >= lenght) ? str.toString() : padLeft('0' + str.toString(), lenght);
-
-Vue.config.devtools = true;
 
 Vue.component('model', {
   props: ['id', 'title', 'requestCount', 'comments'],
@@ -21,7 +18,7 @@ Vue.component('model', {
               v-on:click.stop="vm.request(id, $event)"
               id="requestBtn"
               type="button"
-              class="btn btn-raised"
+              class="btn btn-request"
               data-toggle="tooltip"
               data-placement="left"
               data-original-title="跪求評論">跪求評論<span id="requestCount" class="badge">{{requestCount}}</span></button>
@@ -215,7 +212,7 @@ const vm = new Vue({
       const
         currentTarget = event.currentTarget,
         isActive = currentTarget.classList.contains('active'),
-        url = (!isActive) ? DOMAIN + '/request' : `${DOMAIN}/request/${id}`,
+        url = (!isActive) ? '/request' : `/request/${id}`,
         method = (!isActive) ? 'POST' : 'DELETE',
         body = {
           courseId: (!isActive) ? id : void 0,
@@ -230,7 +227,13 @@ const vm = new Vue({
             $.snackbar({
               content: (!isActive) ? '請求評論成功' : '取消請求評論成功'
             });
-          }
+          } else if (statusCode === 401) {
+            $.snackbar({
+              content: '尚未登入'
+            });
+            return loginVm.login();
+          } else if (statusCode === 403)
+            currentTarget.classList.toggle('active', true);
         });
     }
   }
@@ -257,6 +260,7 @@ const
         const
           courseClass = tr.children[2].innerText,
           courseName = tr.children[3].innerText,
+          courseTeachers = tr.querySelector(':nth-child(11) > a > span').innerText.split('\n'),
           newTd = document.createElement('td'),
           btn = document.createElement('button');
         btn.type = 'button';
@@ -264,15 +268,25 @@ const
         btn.innerText = '查看評論';
         btn.setAttribute('data-class', courseClass);
         btn.setAttribute('data-course-name', courseName);
+        btn.setAttribute('data-course-teachers', courseTeachers.toString());
         btn.setAttribute('data-header', `${courseClass} ${courseName}`);
         btn.onclick = function() {
           loadingIcon.start();
-          new RequestAPI(`/course?class=${this.getAttribute('data-class')}&courseName=${this.getAttribute('data-course-name')}`, 'GET')
+          const
+            query = new URLSearchParams(),
+            teachers = this.getAttribute('data-course-teachers').split(','),
+            className = this.getAttribute('data-class'),
+            courseName = this.getAttribute('data-course-name');
+          teachers.forEach((teacher) => query.append('teachers', teacher));
+          query.append('class', className);
+          query.append('courseName', courseName);
+          new RequestAPI(`/course?${query.toString()}`, 'GET')
             .then(([json]) => {
               loadingIcon.stop();
               vm.id = json.courseId;
-              vm.className = this.getAttribute('data-class');
-              vm.courseName = this.getAttribute('data-course-name');
+              vm.className = className;
+              vm.courseName = courseName;
+              vm.courseTeachers = teachers;
               vm.title = this.getAttribute('data-header');
               vm.requestCount = json.requestCount;
               document.getElementById('requestCount').innerText = json.requestCount;
@@ -288,13 +302,13 @@ const
                 };
               });
               commentBtn.onclick = function() {
-                console.log(gapi.auth2.getAuthInstance().currentUser.get().getAuthResponse().id_token);
                 if (commentForm.value.trim() === '')
                   return;
                 loadingIcon.start();
                 new RequestAPI('/comment', 'POST', {
                     courseClass: vm.className,
                     courseName: vm.courseName,
+                    courseTeachers: vm.courseTeachers,
                     content: commentForm.value,
                     anonymous: anonymousBtn.checked,
                     token: gapi.auth2.getAuthInstance().currentUser.get().getAuthResponse().id_token,
@@ -338,38 +352,10 @@ const
       });
     });
   }),
+  target = document.getElementById('result'),
   config = {
     attributes: true,
     childList: true,
     characterData: true
   };
 observer.observe(target, config);
-
-if (localStorage['remind'] !== 'true') {
-  const
-    container = document.querySelector('body > div.container-fluid'),
-    alertDiv = document.createElement('div'),
-    btn = document.createElement('button'),
-    header = document.createElement('h4'),
-    body = document.createElement('p');
-  alertDiv.classList = 'alert alert-dismissible alert-warning';
-  btn.type = 'button';
-  btn.classList = 'close';
-  btn.setAttribute('data-dismiss', 'alert');
-  btn.innerText = 'x';
-  btn.addEventListener('click', () => {
-    localStorage['remind'] = 'true'
-  });
-  header.innerText = '歡迎使用 NCUE Plus 課程評論系統';
-  body.innerText = `操作說明：
-  點擊右上角登入按鈕
-  使用學校 G suite 帳戶登入
-  帳號為 小寫學號@gm.ncue.edu.tw
-  密碼若未更改過則為 身分證前八碼
-  ex. s0254003@gm.ncue.edu.tw / B1234567
-  登入完成後即可進行課程評論`;
-  alertDiv.appendChild(btn);
-  alertDiv.appendChild(header);
-  alertDiv.appendChild(body);
-  container.insertBefore(alertDiv, container.firstChild);
-}

@@ -6,7 +6,7 @@ chrome.runtime.onInstalled.addListener(function(details) {
     });
   } else if (details.reason == 'update') {
     const thisVersion = chrome.runtime.getManifest().version;
-    if (thisVersion === "2.0.0")
+    if (thisVersion === '2.0.0')
       chrome.tabs.create({
         url: 'http://webap0.ncue.edu.tw/deanv2/other/ob010#firstUse'
       });

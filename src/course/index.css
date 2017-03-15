@@ -36,7 +36,6 @@
 }
 
 #requestBtn {
-    background-color: #00BCD4;
     color: white;
     float: left;
 }
@@ -64,6 +63,16 @@ body>.container-fluid {
 
 .btn.btn-info>.material-icons {
     color: black;
+}
+
+.btn-request {
+    color: #fff;
+    background-color: #00BCD4;
+    border-color: #46b8da;
+}
+
+.btn:not(.btn-raised).btn-request, .input-group-btn .btn:not(.btn-raised).btn-request {
+    color: rgb(3, 169, 244);
 }
 
 .panel-body>pre {

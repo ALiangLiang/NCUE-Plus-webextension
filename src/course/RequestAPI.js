@@ -11,6 +11,13 @@ class RequestAPI {
       }))
       .then((response) =>
         response.json()
-        .then((json) => [json, response.ok, response.status], () => [{}, response.ok, response.status]));
+        .then((json) => [json, response.ok, response.status], () => [{}, response.ok, response.status]), () => {
+          if ($ && $.snackbar)
+            $.snackbar({
+              content: '發生錯誤：\n1. 網路連線不穩或中斷。\n2. 伺服器已離線QQ，麻煩聯絡管理員修復。'
+            });
+          if (loadingIcon)
+            loadingIcon.stop();
+        });
   }
 };

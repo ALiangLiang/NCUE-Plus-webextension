@@ -1,3 +1,9 @@
+(() => {
+  let loc = document.location;
+  if(loc.hostname === '120.107.178.150')
+    document.location = `${loc.protocol}//webap.ncue.edu.tw${loc.pathname}`
+})();
+
 const
   loadingIcon = {
     start: () => document.getElementById('wait').style.display = '',

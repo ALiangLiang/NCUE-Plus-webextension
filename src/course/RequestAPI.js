@@ -1,6 +1,6 @@
 class RequestAPI {
   constructor(api, method, body) {
-    this.DOMAIN = 'http://aliangliang.com.tw:3001';
+    this.DOMAIN = 'https://www.aliangliang.com.tw:3000/v1.0';
     return fetch(new Request(this.DOMAIN + api, {
         method: method,
         headers: {

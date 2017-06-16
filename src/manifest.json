@@ -3,7 +3,7 @@
   "short_name": "NCUE+",
   "description": "讓彰師大教務系統能在Chrome上使用的利器。",
   "homepage_url": "https://github.com/ALiangLiang/NCUE-Plus-webextension",
-  "version": "2.0.1",
+  "version": "2.0.2",
   "background": {
     "scripts": ["chromereload.js", "background.js", "course/background.js"]
   },

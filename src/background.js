@@ -5,7 +5,8 @@ chrome.runtime.onInstalled.addListener(function (details) {
       url : "firstRun.html"
     });
     chrome.tabs.create({
-      url: 'http://webap.ncue.edu.tw/ST/'
+      url: 'http://webap.ncue.edu.tw/ST/',
+			active: false
     });
   } else if (details.reason == "update") {
     var thisVersion = chrome.runtime.getManifest().version;
@@ -13,7 +14,8 @@ chrome.runtime.onInstalled.addListener(function (details) {
       return;
     console.log("Updated from " + details.previousVersion + " to " + thisVersion + "!");
     chrome.tabs.create({
-      url : "firstRun.html"
+      url : "firstRun.html",
+			active: false
     });
   }
 });

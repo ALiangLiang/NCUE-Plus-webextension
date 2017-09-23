@@ -1,1 +1,0 @@
-infoModal.create(document.querySelector("#AutoNumber23 > tbody > tr > td > table > tbody"));

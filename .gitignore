@@ -5,3 +5,5 @@ Thumbs.db
 /bower_components
 /platform
 /lib
+*.pem
+*.crx
